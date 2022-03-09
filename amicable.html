@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Objects</title>
+<script language="javascript">
+window.onload = function() {
+
+	btn = document.getElementById("button1");
+	btn.onclick = function() {
+		
+		var num1 = parseInt(document.form1.t1.value);
+		var num2 = parseInt(document.form1.t2.value);
+        
+
+        const factor_num1 = getFactors(num1);
+        const factor_num2 =  getFactors(num2);
+
+        var num1_sum = factor_num1.pop();
+        var num2_sum = factor_num2.pop();
+        
+        if(num1_sum == num2 || num2_sum == num1)
+        {
+            document.getElementById("result").innerHTML = "The numbers:  " + num1.toString() + "and " + num2.toString() + " are amicable";
+        }
+        else
+        {
+            document.getElementById("result").innerHTML = "The numbers:  " + num1.toString() + "and " + num2.toString() + " are not amicable";
+        }
+
+		document.getElementById("result2").innerHTML = "Factors of " + num1.toString() + " are " +  factor_num1.toString() + "<br>" + 
+                                                     "Factors of " + num2.toString() + " are "   + factor_num2.toString();
+
+	}
+
+}
+
+function getFactors(n)
+{
+    const temp_array = [];
+    let j = 0;
+    let sum = 0;
+	for(let i = 1; i < n ; i++)
+    {
+        if(n % i == 0)
+        {
+            temp_array[j] = i;
+            sum = sum + i;
+            j++;
+        }
+    }
+
+    temp_array[j] = sum;
+    return temp_array;
+}
+
+</script>
+</head>
+
+<body>
+	<form name = 'form1'
+		  method ="get"  action="#" >
+	<input type="number" name = 't1' id='text1'>
+    <br>
+    <input type="number" name = 't2' id='text2'>
+    <br>
+	<input type = "button" name ="button1" value = "number" id = "button1">
+	<br>
+	<div id= "result">&nbsp;</div>
+	<div id= "result2">&nbsp;</div>
+</form>
+</body>
+</html>
